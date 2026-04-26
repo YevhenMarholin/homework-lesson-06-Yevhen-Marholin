@@ -190,18 +190,25 @@ replicas: 3
 
 ```bash
 kubectl apply -f deployment.yaml
+deployment.apps/course-app configured
 ```
 
 Перевірка процесу оновлення:
 
 ```bash
 kubectl rollout status deployment/course-app
+deployment "course-app" successfully rolled out
 ```
 
 Перевірка pod-ів:
 
 ```bash
 kubectl get pods
+
+NAME                          READY   STATUS    RESTARTS   AGE
+course-app-57fd56b8c8-6crlx   1/1     Running   0          3m59s
+course-app-57fd56b8c8-wkxbs   1/1     Running   0          3m59s
+course-app-57fd56b8c8-wnbqz   1/1     Running   0          13s
 ```
 
 ---
