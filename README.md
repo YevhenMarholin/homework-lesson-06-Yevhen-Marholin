@@ -6,18 +6,65 @@
 
 ```bash
 docker build -t course-app .
+
+docker build -t course-app .
+[+] Building 16.7s (11/11) FINISHED                                                                    docker:default
+ => [internal] load build definition from Dockerfile                                                             0.0s
+ => => transferring dockerfile: 247B                                                                             0.0s
+ => [internal] load metadata for docker.io/library/python:3.12-alpine                                            1.2s
+ => [auth] library/python:pull token for registry-1.docker.io                                                    0.0s
+ => [internal] load .dockerignore                                                                                0.0s
+ => => transferring context: 2B                                                                                  0.0s
+ => [1/5] FROM docker.io/library/python:3.12-alpine@sha256:236173eb74001afe2f60862de935b74fcbd00adfca247b2c2705  1.1s
+ => => resolve docker.io/library/python:3.12-alpine@sha256:236173eb74001afe2f60862de935b74fcbd00adfca247b2c2705  0.0s
+ => => sha256:3a4f2e6e1560fccb75f8aa9c6b7458b3179164f6378b125e533286c88351cd2a 250B / 250B                       0.1s
+ => => sha256:fd21a26fb55d22baaa317c98a4296e6a284dd39cc0f9e68ef781bb74adfd6dc7 13.74MB / 13.74MB                 0.4s
+ => => sha256:254ac41e2afd13e7a1276627191463329b96d835eab35e7804fdad56d7e363d5 0B / 455.66kB                    15.4s
+ => => sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 3.86MB / 3.86MB                   0.4s
+ => => extracting sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb                        0.1s
+ => => extracting sha256:254ac41e2afd13e7a1276627191463329b96d835eab35e7804fdad56d7e363d5                        0.1s
+ => => extracting sha256:fd21a26fb55d22baaa317c98a4296e6a284dd39cc0f9e68ef781bb74adfd6dc7                        0.4s
+ => => extracting sha256:3a4f2e6e1560fccb75f8aa9c6b7458b3179164f6378b125e533286c88351cd2a                        0.0s
+ => [internal] load build context                                                                                0.0s
+ => => transferring context: 26.80kB                                                                             0.0s
+ => [2/5] WORKDIR /src                                                                                           0.5s
+ => [3/5] COPY requirements.txt .                                                                                0.0s
+ => [4/5] RUN pip install --no-cache-dir -r requirements.txt                                                    10.0s
+ => [5/5] COPY . .                                                                                               0.1s
+ => exporting to image                                                                                           3.7s
+ => => exporting layers                                                                                          2.8s
+ => => exporting manifest sha256:fc89aad28a43e8e15e9fdf86eaa1bd765598fe41b6ed7cd486b7bf940e56425c                0.0s
+ => => exporting config sha256:00caa38519ced92bf3c5d0043db7ba04c3975dc2191d621fcca6d276b5b68b9f                  0.0s
+ => => exporting attestation manifest sha256:289fd5aa20a9244ec5960289d7f0bb231a60a680f610aa98029550fa5630c920    0.0s
+ => => exporting manifest list sha256:c239f62a8273363a331c8546c135abc2a1471e55290f63a75ee1ac16874de8d6           0.0s
+ => => naming to docker.io/library/course-app:latest                                                             0.0s
+ => => unpacking to docker.io/library/course-app:latest     
 ```
 
 Образ було затеговано для Docker Hub:
 
 ```bash
-docker tag course-app yevhen_marholin/course-app:latest
+docker tag course-app djmen12/course-app:latest
 ```
 
 Образ було завантажено у Docker Hub:
 
 ```bash
-docker push yevhen_marholin/course-app:latest
+
+@YevhenMarholin ➜ /workspaces/homework-lesson-06-Yevhen-Marholin/apps/course-app (main) $ docker push djmen12/course-app:latest
+The push refers to repository [docker.io/djmen12/course-app]
+fd21a26fb55d: Pushed 
+3a4f2e6e1560: Pushed 
+6a0ac1617861: Pushed 
+d6f7fe025f9e: Pushed 
+f8441933c847: Pushed 
+42319ef88c1c: Pushed 
+254ac41e2afd: Pushed 
+afccade3abdd: Pushed 
+cae1a822b5f5: Pushed 
+latest: digest: sha256:c239f62a8273363a331c8546c135abc2a1471e55290f63a75ee1ac16874de8d6 size: 856
+
+
 ```
 
 ---
