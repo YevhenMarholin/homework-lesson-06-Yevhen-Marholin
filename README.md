@@ -219,6 +219,6 @@ course-app-57fd56b8c8-wnbqz   1/1     Running   0          13s
 - завантажено image у Docker Hub
 - описано Kubernetes `Deployment`
 - описано Kubernetes `Service` з типом `NodePort`
-- задеплоєно ресурси у Rancher Desktop Kubernetes cluster
+- задеплоєно ресурси у Kubernetes cluster
 - змінено кількість реплік у `deployment.yaml`
 - перевірено процес оновлення через `kubectl rollout status deployment/course-app`
