@@ -90,15 +90,13 @@ spec:
     spec:
       containers:
         - name: course-app
-          image: yevhen_marholin/course-app:latest
+          image: djmen12/course-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
             - name: APP_STORE
-              value: redis
-            - name: APP_REDIS_URL
-              value: redis://redis:6379/0
+              value: file
 ```
 
 ---
@@ -221,7 +219,6 @@ course-app-57fd56b8c8-wnbqz   1/1     Running   0          13s
 - завантажено image у Docker Hub
 - описано Kubernetes `Deployment`
 - описано Kubernetes `Service` з типом `NodePort`
-- додано Redis як зовнішнє сховище для застосунку
 - задеплоєно ресурси у Rancher Desktop Kubernetes cluster
 - змінено кількість реплік у `deployment.yaml`
 - перевірено процес оновлення через `kubectl rollout status deployment/course-app`
