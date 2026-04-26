@@ -123,56 +123,13 @@ spec:
       nodePort: 30080
 ```
 
----
-
-## 4. Redis manifest
-
-Для роботи застосунку з Redis було створено файл `redis.yaml`.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis
-  template:
-    metadata:
-      labels:
-        app: redis
-    spec:
-      containers:
-        - name: redis
-          image: redis:7-alpine
-          ports:
-            - containerPort: 6379
-```
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis
-spec:
-  selector:
-    app: redis
-  ports:
-    - protocol: TCP
-      port: 6379
-      targetPort: 6379
-```
-
----
-
-## 5. Deploy у Rancher Desktop cluster
+## 4. Deploy у Rancher Desktop cluster
 
 ```bash
-kubectl apply -f redis.yaml
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
+deployment.apps/course-app created
+service/course-app-service created
 ```
 
 Перевірка ресурсів:
@@ -181,11 +138,20 @@ kubectl apply -f service.yaml
 kubectl get pods
 kubectl get deployments
 kubectl get services
+
+AME                          READY   STATUS    RESTARTS   AGE
+course-app-57fd56b8c8-6crlx   1/1     Running   0          9s
+course-app-57fd56b8c8-wkxbs   1/1     Running   0          9s
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+course-app   2/2     2            2           9s
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+course-app-service   NodePort    10.96.32.98   <none>        8080:30080/TCP   9s
+kubernetes           ClusterIP   10.96.0.1     <none>        443/TCP          3m6s
 ```
 
 ---
 
-## 6. Перевірка застосунку
+## 5. Перевірка застосунку
 
 Service має тип `NodePort`, тому застосунок доступний на порту `30080`.
 
@@ -199,8 +165,17 @@ curl http://localhost:30080/healthz
 ```text
 http://localhost:30080
 http://localhost:30080/healthz
-```
 
+kubectl port-forward service/course-app-service 8080:8080
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+```
+![alt text](image.png)
 ---
 
 ## 7. Зміна кількості реплік
