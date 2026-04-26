@@ -121,7 +121,7 @@ spec:
       nodePort: 30080
 ```
 
-## 4. Deploy у Rancher Desktop cluster
+## 4. Deploy у Kubernetes cluster
 
 ```bash
 kubectl apply -f deployment.yaml
